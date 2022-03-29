@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="961.0" prefWidth="702.0" style="-fx-background-color: #291e2c;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="socialnetwork.controller.RegisterController">
+   <children>
+      <AnchorPane prefHeight="82.0" prefWidth="702.0" style="-fx-background-color: #4e3644;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <children>
+            <ImageView blendMode="MULTIPLY" fitHeight="70.0" fitWidth="99.0" layoutX="28.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="28.0">
+               <image>
+                  <Image url="@images/registerIcon.jpg" />
+               </image>
+            </ImageView>
+            <Label layoutX="102.0" layoutY="19.0" prefHeight="45.0" prefWidth="231.0" text="User Registration" textFill="#0a0000" AnchorPane.leftAnchor="102.0">
+               <font>
+                  <Font name="Bell MT Bold" size="28.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <StackPane layoutY="79.0" prefHeight="883.0" prefWidth="702.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="79.0">
+         <children>
+      <Group StackPane.alignment="CENTER">
+              <children>
+            <Label layoutX="86.0" layoutY="-84.0" prefHeight="21.0" prefWidth="83.0" text="First Name" textFill="WHITE" AnchorPane.leftAnchor="86.0">
+               <font>
+                  <Font name="Bell MT" size="16.0" />
+               </font>
+            </Label>
+            <TextField fx:id="textFieldFirstName" layoutX="81.0" layoutY="-59.0" prefHeight="25.0" prefWidth="365.0" promptText="First Name" styleClass="fancyTextField" stylesheets="@css/style.css" AnchorPane.leftAnchor="81.0" AnchorPane.rightAnchor="-66.0">
+               <font>
+                  <Font name="Bell MT" size="13.0" />
+               </font></TextField>
+            <Label layoutX="84.0" layoutY="-8.0" prefHeight="20.0" prefWidth="73.0" text="Last Name" textFill="WHITE" AnchorPane.leftAnchor="84.0">
+               <font>
+                  <Font name="Bell MT" size="16.0" />
+               </font>
+            </Label>
+            <TextField fx:id="textFieldLastName" layoutX="81.0" layoutY="13.0" prefHeight="25.0" prefWidth="365.0" promptText="Last name" styleClass="fancyTextField" stylesheets="@css/style.css" AnchorPane.leftAnchor="81.0" AnchorPane.rightAnchor="-74.0">
+               <font>
+                  <Font name="Bell MT" size="13.0" />
+               </font></TextField>
+            <Label layoutX="91.0" layoutY="295.0" prefHeight="20.0" prefWidth="73.0" text="Email" textFill="WHITE" AnchorPane.leftAnchor="91.0">
+               <font>
+                  <Font name="Bell MT" size="16.0" />
+               </font>
+            </Label>
+            <TextField fx:id="textFieldEmail" layoutX="81.0" layoutY="316.0" prefHeight="25.0" prefWidth="365.0" promptText="address@email.com" styleClass="fancyTextField" stylesheets="@css/style.css" AnchorPane.leftAnchor="84.0" AnchorPane.rightAnchor="-80.0">
+               <font>
+                  <Font name="Bell MT" size="13.0" />
+               </font></TextField>
+            <Label layoutX="91.0" layoutY="371.0" prefHeight="20.0" prefWidth="73.0" text="Password" textFill="WHITE" AnchorPane.leftAnchor="91.0">
+               <font>
+                  <Font name="Bell MT" size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="91.0" layoutY="447.0" prefHeight="21.0" prefWidth="136.0" text="Confirm Password" textFill="WHITE" AnchorPane.leftAnchor="91.0">
+               <font>
+                  <Font name="Bell MT" size="16.0" />
+               </font>
+            </Label>
+            <Button fx:id="registerButton" alignment="CENTER" contentDisplay="CENTER" layoutX="138.0" layoutY="591.0" mnemonicParsing="false" onAction="#onRegisterButtonPress" prefHeight="33.0" prefWidth="278.0" style="-fx-background-radius: 15px; -fx-text-fill: #ffffff; -fx-background-color: #68434b;" text="Register" textFill="WHITE" AnchorPane.bottomAnchor="127.0" AnchorPane.leftAnchor="138.0" AnchorPane.rightAnchor="-51.0">
+               <font>
+                  <Font name="Bell MT" size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="returnButton" alignment="CENTER" contentDisplay="CENTER" layoutX="236.0" layoutY="644.0" mnemonicParsing="false" onAction="#onReturnButtonPress" prefHeight="30.0" prefWidth="82.0" style="-fx-background-radius: 15px; -fx-text-fill: #ffffff; -fx-background-color: #68434b;" text="Return" AnchorPane.bottomAnchor="77.0" AnchorPane.leftAnchor="236.0" AnchorPane.rightAnchor="47.0">
+               <font>
+                  <Font name="Bell MT" size="16.0" />
+               </font>
+            </Button>
+            <PasswordField fx:id="textFieldPassword" layoutX="81.0" layoutY="392.0" prefHeight="25.0" prefWidth="365.0" promptText="Password" styleClass="fancyTextField" stylesheets="@css/style.css" AnchorPane.leftAnchor="84.0" AnchorPane.rightAnchor="-80.0">
+               <font>
+                  <Font name="Bell MT" size="13.0" />
+               </font>
+            </PasswordField>
+            <PasswordField fx:id="textFieldConfirmPassword" layoutX="81.0" layoutY="476.0" prefHeight="25.0" prefWidth="365.0" promptText="Confirm Password" styleClass="fancyTextField" stylesheets="@css/style.css" AnchorPane.leftAnchor="87.0" AnchorPane.rightAnchor="-80.0">
+               <font>
+                  <Font name="Bell MT" size="13.0" />
+               </font>
+            </PasswordField>
+            <Label fx:id="errorLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="102.0" layoutY="525.0" prefHeight="45.0" prefWidth="338.0" text="Warning" textAlignment="CENTER" textFill="#d70707" visible="false" wrapText="true" AnchorPane.bottomAnchor="181.0" AnchorPane.leftAnchor="102.0" AnchorPane.rightAnchor="-88.0">
+               <font>
+                  <Font name="Bell MT" size="17.0" />
+               </font>
+            </Label>
+                  <Label layoutX="87.0" layoutY="215.0" prefHeight="20.0" prefWidth="103.0" text="Phone Number" textFill="WHITE">
+                     <font>
+                        <Font name="Bell MT" size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="textFieldCNP" layoutX="81.0" layoutY="164.0" prefHeight="25.0" prefWidth="365.0" promptText="ID" styleClass="fancyTextField" stylesheets="@css/style.css">
+                     <font>
+                        <Font name="Bell MT" size="13.0" />
+                     </font>
+                  </TextField>
+                  <Label layoutX="84.0" layoutY="143.0" prefHeight="20.0" prefWidth="73.0" text="CNP" textFill="WHITE">
+                     <font>
+                        <Font name="Bell MT" size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="textFieldPhoneNumber" layoutX="81.0" layoutY="242.0" prefHeight="25.0" prefWidth="365.0" promptText="Phone Number" styleClass="fancyTextField" stylesheets="@css/style.css">
+                     <font>
+                        <Font name="Bell MT" size="13.0" />
+                     </font>
+                  </TextField>
+                  <Label layoutX="84.0" layoutY="64.0" prefHeight="20.0" prefWidth="73.0" text="Address" textFill="WHITE">
+                     <font>
+                        <Font name="Bell MT" size="16.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="textFieldAddress" layoutX="81.0" layoutY="92.0" prefHeight="25.0" prefWidth="365.0" promptText="Address" styleClass="fancyTextField" stylesheets="@css/style.css">
+                     <font>
+                        <Font name="Bell MT" size="13.0" />
+                     </font>
+                  </TextField>
+              </children>
+      </Group>
+         </children>
+      </StackPane>
+   </children>
+</AnchorPane>
