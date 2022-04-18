@@ -7,6 +7,7 @@ import library.domain.User;
 import library.repository.interfaces.IBookRepository;
 import library.repository.interfaces.IBorrowedBookRepository;
 import library.repository.interfaces.IUserRepository;
+import library.validators.exceptions.RepositoryException;
 import library.validators.exceptions.UserException;
 import library.validators.exceptions.ValidationException;
 
@@ -26,7 +27,7 @@ public class Service {
         this.borrowedBookRepository = borrowedBookRepository;
     }
 
-    public String loginState(User user) throws UserException, ValidationException {
+    public String loginState(User user) throws UserException, ValidationException, RepositoryException {
 
         if (userRepository.findUser(user.getUsername()) == null)
             return "null";
@@ -35,7 +36,7 @@ public class Service {
         return "null";
     }
 
-    public List<Book> getBooks() {
+    public List<Book> getBooks() throws RepositoryException {
         return bookRepository.getAll();
     }
 
@@ -43,44 +44,48 @@ public class Service {
         books.forEach((book, noCopies) -> {
             LocalDate ld = LocalDate.now();
             BorrowedBook borrowedBook = new BorrowedBook(book.getISBN(), user.getUsername(), ld.toString(), ld.plusWeeks(2).toString(), noCopies);
-            borrowedBookRepository.add(borrowedBook);
+            try {
+                borrowedBookRepository.add(borrowedBook);
+            } catch (RepositoryException e) {
+                e.printStackTrace();
+            }
             Book updateNoCopies = null;
             try {
                 updateNoCopies = bookRepository.findBook(book.getISBN());
-            } catch (ValidationException ignored) {
+            } catch (ValidationException | RepositoryException ignored) {
             }
             updateNoCopies.setNoCopies(updateNoCopies.getNoCopies() - noCopies);
             try {
                 bookRepository.updateBook(updateNoCopies);
-            } catch (ValidationException ignored) {
+            } catch (ValidationException | RepositoryException ignored) {
             }
         });
     }
 
-    public void addBook(Book book) throws ValidationException {
+    public void addBook(Book book) throws ValidationException, RepositoryException {
         bookRepository.addBook(book);
     }
 
-    public void updateBook(Book book) throws ValidationException {
+    public void updateBook(Book book) throws ValidationException, RepositoryException {
         bookRepository.updateBook(book);
     }
 
-    public void deleteBook(String ISBN) throws ValidationException {
+    public void deleteBook(String ISBN) throws ValidationException, RepositoryException {
         bookRepository.deleteBook(ISBN);
     }
 
-    public void returnBook(String ISBN, String username) throws ValidationException {
+    public void returnBook(String ISBN, String username) throws ValidationException, RepositoryException {
         Integer noCop = borrowedBookRepository.delete(ISBN, username);
         Book book = bookRepository.findBook(ISBN);
         book.setNoCopies(book.getNoCopies() + noCop);
         bookRepository.updateBook(book);
     }
 
-    public Boolean findUser(String username) throws UserException, ValidationException {
+    public Boolean findUser(String username) throws UserException, ValidationException, RepositoryException {
         return userRepository.findUser(username) != null;
     }
 
-    public void addSubscriber(Subscriber subscriber) {
+    public void addSubscriber(Subscriber subscriber) throws RepositoryException {
         userRepository.addSubscriber(subscriber);
     }
 

@@ -9,6 +9,7 @@ version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
+    maven { url 'https://mvnrepository.com/artifact/net.kemitix/sqlite-dialect'}
 }
 
 ext {
@@ -23,8 +24,8 @@ tasks.withType(JavaCompile) {
 }
 
 application {
-    mainModule = 'com.example.proiectiss'
-    mainClass = 'com.example.proiectiss.HelloApplication'
+    mainModule = 'library'
+    mainClass = 'library.App'
 }
 
 javafx {
@@ -38,6 +39,11 @@ dependencies {
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+
+
+    implementation 'org.postgresql:postgresql:42.3.1'
+
+
 }
 
 test {

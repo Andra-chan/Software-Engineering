@@ -1,10 +1,13 @@
-module com.example.proiectiss {
+module library {
     requires javafx.controls;
     requires javafx.fxml;
 
     requires org.controlsfx.controls;
     requires org.kordamp.bootstrapfx.core;
+    requires java.sql;
 
-    opens com.example.proiectiss to javafx.fxml;
-    exports com.example.proiectiss;
+    opens library to javafx.fxml;
+    opens library.controllers to javafx.fxml;
+
+    exports library;
 }

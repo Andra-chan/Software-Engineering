@@ -3,7 +3,7 @@ package library.validators;
 import library.domain.User;
 import library.validators.exceptions.ValidationException;
 
-public class UserValidator implements Validator<User> {
+public class UserValidator implements IValidator<User> {
 
     private String errors = "";
 
