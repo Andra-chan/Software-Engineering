@@ -1,25 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
-
-<AnchorPane prefHeight="778.0" prefWidth="1075.0" style="-fx-background-color: #291e2c;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="socialnetwork.controller.FriendsController">
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+<AnchorPane prefHeight="785.0" prefWidth="937.0" style="-fx-background-color: #291e2c;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="library.controllers.LibrarianController">
    <children>
-      <AnchorPane prefHeight="105.0" prefWidth="1075.0" style="-fx-background-color: #4e3644;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <AnchorPane prefHeight="106.0" prefWidth="979.0" style="-fx-background-color: #4e3644;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
             <ImageView fitHeight="78.0" fitWidth="183.0" layoutX="14.0" layoutY="10.0" pickOnBounds="true" AnchorPane.leftAnchor="14.0">
                <image>
                   <Image url="@images/logo.png" />
                </image>
             </ImageView>
-            <Button fx:id="logoutButton" layoutX="1000.0" layoutY="25.0" mnemonicParsing="false" onAction="#onLogoutButtonClick" prefHeight="64.0" prefWidth="63.0" style="-fx-background-color: #634f5d; -fx-text-fill: #ffffff; -fx-background-radius: 15px;" AnchorPane.rightAnchor="12.0">
+            <Button fx:id="logoutButton" layoutX="852.0" layoutY="21.0" mnemonicParsing="false" onAction="#onLogoutButtonClick" prefHeight="64.0" prefWidth="63.0" style="-fx-background-color: #634f5d; -fx-text-fill: #ffffff; -fx-background-radius: 15px;" AnchorPane.rightAnchor="21.799999999999955">
                <graphic>
                   <ImageView blendMode="DARKEN" fitHeight="44.0" fitWidth="61.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -28,29 +22,13 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Label fx:id="menuLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="421.0" layoutY="25.0" onMouseClicked="#onMenuClick" prefHeight="55.0" prefWidth="233.0" text="OPEN BOOK" textFill="WHITE" wrapText="true">
+            <Label fx:id="menuLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="352.0" layoutY="21.0" onMouseClicked="#onMenuClick" prefHeight="55.0" prefWidth="233.0" text="OPEN BOOK" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="Bell MT" size="36.0" />
                </font>
             </Label>
          </children>
       </AnchorPane>
-      <ListView fx:id="bookList" layoutX="356.0" layoutY="194.0" prefHeight="565.0" prefWidth="678.0" style="-fx-background-color: #291e2c;" stylesheets="@css/style.css" AnchorPane.bottomAnchor="26.0" AnchorPane.topAnchor="194.0">
-         <styleClass>
-            <String fx:value="list-cell" />
-            <String fx:value="scroll-bar" />
-         </styleClass>
-      </ListView>
-      <TextField fx:id="searchField" layoutX="356.0" layoutY="123.0" onKeyTyped="#updateModel" prefHeight="39.0" prefWidth="678.0" promptText="Search" styleClass="fancyTextField" stylesheets="@css/style.css">
-         <font>
-            <Font name="Bell MT" size="12.0" />
-         </font>
-      </TextField>
-      <ImageView blendMode="DARKEN" fitHeight="31.0" fitWidth="55.0" layoutX="319.0" layoutY="129.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/searchIcon.png" />
-         </image>
-      </ImageView>
       <AnchorPane fx:id="addBookPane" layoutY="105.0" onMouseClicked="#onMenuAddClick" prefHeight="170.0" prefWidth="314.0" style="-fx-background-color: #423d50;">
          <children>
             <Label alignment="CENTER" contentDisplay="CENTER" layoutX="57.0" layoutY="53.0" prefHeight="64.0" prefWidth="200.0" text="Add book" textFill="WHITE">
@@ -107,5 +85,13 @@
             </ImageView>
          </children>
       </AnchorPane>
+      <TableView fx:id="table" layoutX="344.0" layoutY="136.0" prefHeight="618.0" prefWidth="565.0" styleClass="fancyTable" stylesheets="@css/style.css">
+         <columns>
+            <TableColumn fx:id="isbnCol" prefWidth="100.0" text="ISBN" />
+            <TableColumn fx:id="titleCol" prefWidth="169.5999755859375" text="Title" />
+            <TableColumn fx:id="authorCol" prefWidth="173.5999755859375" text="Author" />
+            <TableColumn fx:id="noCopiesCol" prefWidth="117.5999755859375" text="No of Copies" />
+         </columns>
+      </TableView>
    </children>
 </AnchorPane>

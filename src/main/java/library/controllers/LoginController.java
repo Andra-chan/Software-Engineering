@@ -1,12 +1,9 @@
 package library.controllers;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.AnchorPane;
 import library.App;
 import library.domain.User;
 import library.service.Service;
@@ -30,53 +27,19 @@ public class LoginController {
         this.service = service;
     }
 
-    private void openSubscriberPage(User user) throws IOException {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("subscriberPage.fxml"));
-            AnchorPane root = fxmlLoader.load();
-            App.currentStage.setScene(new Scene(root, root.getPrefWidth(), root.getPrefHeight()));
-            App.currentStage.setMinHeight(root.getPrefHeight());
-            App.currentStage.setMinWidth(root.getPrefWidth());
-            App.currentStage.setResizable(false);
-
-            SubscriberController controller = fxmlLoader.getController();
-            controller.setService(this.service, user);
-            controller.initialize_();
-        } catch (IOException | RepositoryException ex) {
-            ex.printStackTrace();
-        }
-    }
-
-    private void openLibrarianPage(User user) throws IOException {
-        try {
-            FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("librarianPage.fxml"));
-            AnchorPane root = fxmlLoader.load();
-            App.currentStage.setScene(new Scene(root, root.getPrefWidth(), root.getPrefHeight()));
-            App.currentStage.setMinHeight(root.getPrefHeight());
-            App.currentStage.setMinWidth(root.getPrefWidth());
-            App.currentStage.setResizable(false);
-
-            LibrarianController controller = fxmlLoader.getController();
-            controller.setService(this.service, user);
-            controller.initialize_();
-        } catch (IOException | RepositoryException ex) {
-            ex.printStackTrace();
-        }
-    }
-
-    public void onLoginButtonClick() {
+    public void handleLogin() {
         String user = username.getText();
         String pass = password.getText();
         try {
             String type = service.loginState(new User(user, pass, "unknown"));
             switch (type) {
                 case "SUBSCRIBER": {
-                    openSubscriberPage(new User(user, pass, type));
+                    App.openSubscriberPage(this.service, new User(user, pass, type));
                     break;
                 }
                 case "LIBRARIAN":
                     System.out.println("Librarian");
-                    openLibrarianPage(new User(user, pass, type));
+                    App.openLibrarianPage(this.service, new User(user, pass, type));
                     break;
                 default:
                     Alert alert = new Alert(Alert.AlertType.WARNING);

@@ -31,7 +31,7 @@ public class BookRepository implements IBookRepository {
         if (findBook(book.getISBN()) != null)
             updateBook(book);
         else {
-            String sql = "insert into Book(ISBN, title, author, noBooks) values (?, ?, ?, ?)";
+            String sql = "insert into book(isbn, title, author, no_books) values (?, ?, ?, ?)";
             try (Connection connection = DriverManager.getConnection(url, username, password);
                  PreparedStatement ps = connection.prepareStatement(sql)) {
                 ps.setString(1, book.getISBN());
@@ -51,7 +51,7 @@ public class BookRepository implements IBookRepository {
     public void deleteBook(String ISBN) throws ValidationException, RepositoryException {
 
         if (ISBN == null || ISBN.equals("")) throw new ValidationException("ISBN can't be null!");
-        String sql = "DELETE FROM Book WHERE ISBN = ?";
+        String sql = "DELETE FROM book WHERE isbn = ?";
         try (Connection connection = DriverManager.getConnection(url, username, password);
              PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setString(1, ISBN);
@@ -66,7 +66,7 @@ public class BookRepository implements IBookRepository {
     public void updateBook(Book book) throws ValidationException, RepositoryException {
 
         valid.validate(book);
-        String sql = "UPDATE Book SET title = ?, author = ?, noCopies = ? WHERE ISBN = ?";
+        String sql = "UPDATE book SET title = ?, author = ?, no_books = ? WHERE isbn = ?";
         try (Connection connection = DriverManager.getConnection(url, username, password);
              PreparedStatement ps = connection.prepareStatement(sql)) {
             ps.setString(1, book.getTitle());
@@ -85,15 +85,15 @@ public class BookRepository implements IBookRepository {
 
         if (ISBN == null || ISBN.equals("")) throw new ValidationException("ISBN can't be null!");
         try (Connection connection = DriverManager.getConnection(url, username, password);
-             PreparedStatement statement = connection.prepareStatement("SELECT * from Book WHERE ISBN =?")) {
+             PreparedStatement statement = connection.prepareStatement("SELECT * from book WHERE isbn =?")) {
             statement.setString(1, ISBN);
             ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
-                String isbn = resultSet.getString("ISBN");
+                String isbn = resultSet.getString("isbn");
                 String title = resultSet.getString("title");
                 String author = resultSet.getString("author");
-                Integer noBooks = resultSet.getInt("noBooks");
+                Integer noBooks = resultSet.getInt("no_books");
 
                 Book book = new Book(isbn, title, author, noBooks);
                 return book;
@@ -110,14 +110,14 @@ public class BookRepository implements IBookRepository {
 
         List<Book> books = new ArrayList<>();
         try (Connection connection = DriverManager.getConnection(url, username, password);
-             PreparedStatement statement = connection.prepareStatement("SELECT * from Book");
+             PreparedStatement statement = connection.prepareStatement("SELECT * from book");
              ResultSet resultSet = statement.executeQuery()) {
 
             while (resultSet.next()) {
-                String isbn = resultSet.getString("ISBN");
+                String isbn = resultSet.getString("isbn");
                 String title = resultSet.getString("title");
                 String author = resultSet.getString("author");
-                Integer noBooks = resultSet.getInt("noBooks");
+                Integer noBooks = resultSet.getInt("no_books");
 
                 Book book = new Book(isbn, title, author, noBooks);
                 books.add(book);

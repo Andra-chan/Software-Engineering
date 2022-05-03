@@ -2,6 +2,7 @@ package library.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import library.App;
 import library.domain.Subscriber;
@@ -18,9 +19,11 @@ public class RegisterController {
     public TextField password;
     public TextField confirmPassword;
     private Service service;
+    public Label label;
 
     private void verifyData() throws Exception {
 
+        label.setVisible(false);
         if (firstName.getText().isEmpty()) throw new ValidationException("First Name shouldn't be empty!");
         if (firstName.getText().charAt(0) > 'Z')
             throw new ValidationException("First Name must start with capital letter!");
@@ -45,6 +48,7 @@ public class RegisterController {
             verifyData();
             Subscriber subscriber = new Subscriber(firstName.getText(), secondName.getText(), cnp.getText(), address.getText(), phoneNumber.getText(), username.getText(), password.getText());
             service.addSubscriber(subscriber);
+            label.setVisible(true);
         } catch (Exception ex) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("A problem appeared!");
@@ -55,7 +59,7 @@ public class RegisterController {
 
     }
 
-    public void onReturnButtonPress() {
+    public void onReturnButtonClick() {
         App.changeSceneToLogin(service);
     }
 

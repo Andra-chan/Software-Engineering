@@ -8,6 +8,56 @@
     -fx-font-family: "Bell MT";
 }
 
+.fancyTextArea{
+    -fx-background-color: transparent;
+    -fx-border-color: grey;
+    -fx-border-style: solid ;
+    -fx-padding: 10;
+    -fx-text-fill: grey;
+    -fx-font-size: 15;
+    -fx-font-family: "Bell MT";
+}
+
+.fancyTable{
+    -fx-background-color:  transparent;
+    -fx-text-fill: white;
+    -fx-border-color: transparent;
+}
+
+.table-view .scroll-bar{
+    visibility: hidden;
+}
+
+.fancyTable:focused {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.table-cell{
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-border-color: transparent;
+}
+
+.table-row-cell{
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+}
+
+.table-row-cell:odd:filled{
+    -fx-background-color:  #634f5d;
+    -fx-text-alignment: center;
+}
+
+.fancyTable .column-header .label{
+    -fx-text-fill: white;
+}
+
+.fancyTable .column-header{
+    -fx-background-color: #4e3644;
+    -fx-text-fill: white;
+}
+
 .fancyText{
     -fx-fill: grey;
     -fx-font-size: 15;
@@ -118,11 +168,11 @@ scroll-bar:vertical .thumb{
     -fx-background-radius: 5;
 }
 .scroll-bar:horizontal{
-    -fx-background-color: #243142;
+    -fx-background-color: transparent;
 }
 
 scroll-bar:horizontal .thumb{
-    -fx-background-color: #2a9482;
+    -fx-background-color: transparent;
     -fx-background-insets: 5, 5, 5;
     -fx-background-radius: 5;
 }

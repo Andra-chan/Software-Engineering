@@ -40,6 +40,10 @@ public class Service {
         return bookRepository.getAll();
     }
 
+    public List<BorrowedBook> getBorrowedBooks() throws RepositoryException{
+        return borrowedBookRepository.getAll();
+    }
+
     public void borrowBooks(User user, Map<Book, Integer> books) {
         books.forEach((book, noCopies) -> {
             LocalDate ld = LocalDate.now();

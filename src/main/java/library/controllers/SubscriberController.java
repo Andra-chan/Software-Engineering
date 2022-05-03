@@ -3,13 +3,11 @@ package library.controllers;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
+import library.App;
 import library.domain.Book;
 import library.domain.User;
 import library.service.Service;
@@ -26,6 +24,8 @@ public class SubscriberController {
     public TableColumn authorCol;
     public TableColumn titleCol;
     public TableColumn noCopiesCol;
+    public Label label;
+    public Label userName;
 
     public TextArea textArea;
     public Button borrowBtn;
@@ -37,6 +37,7 @@ public class SubscriberController {
     public void setService(Service service, User user) {
         this.service = service;
         this.user = user;
+        userName.setText("Welcome, " + user.getUsername() +"!");
     }
 
     public void initialize() {
@@ -51,6 +52,7 @@ public class SubscriberController {
 
     private void addToCart(Book book) {
 
+        label.setVisible(false);
         textArea.appendText("ISBN: " + book.getISBN() + ", Title: " + book.getTitle() + ", Author: " + book.getAuthor() + "\n");
         if (booksToBorrow.containsKey(book))
             booksToBorrow.put(book, booksToBorrow.get(book) + 1);
@@ -76,8 +78,12 @@ public class SubscriberController {
         service.borrowBooks(user, booksToBorrow);
         textArea.setText("");
         booksToBorrow.clear();
+        label.setVisible(true);
         initialize_();
+    }
 
+    public void onLogoutButtonClick() {
+        App.changeSceneToLogin(service);
     }
 
 }

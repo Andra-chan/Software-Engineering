@@ -5,11 +5,13 @@ import javafx.collections.ObservableList;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import library.App;
 import library.domain.Book;
 import library.domain.User;
 import library.service.Service;
 import library.validators.exceptions.RepositoryException;
 
+import java.io.IOException;
 import java.util.List;
 
 public class LibrarianController {
@@ -38,5 +40,29 @@ public class LibrarianController {
         ObservableList<Book> data = FXCollections.observableArrayList(books);
         table.setItems(data);
 
+    }
+
+    public void onLogoutButtonClick() {
+        App.changeSceneToLogin(service);
+    }
+
+    public void onMenuAddClick(){
+        App.changeSceneToAddBook(service, user);
+    }
+
+    public void onMenuUpdateClick(){
+        App.changeSceneToUpdateBook(service, user);
+    }
+
+    public void onMenuDeleteClick(){
+        App.changeSceneToDeleteBook(service, user);
+    }
+
+    public void onMenuReturnClick(){
+        App.changeSceneToReturnBook(service, user);
+    }
+
+    public void onMenuClick() throws IOException {
+        App.openLibrarianPage(service, user);
     }
 }

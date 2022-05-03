@@ -1,18 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
-
-<AnchorPane prefHeight="846.0" prefWidth="1075.0" style="-fx-background-color: #291e2c;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="socialnetwork.controller.FriendsController">
+<AnchorPane prefHeight="804.0" prefWidth="1075.0" style="-fx-background-color: #291e2c;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="library.controllers.SubscriberController">
    <children>
       <AnchorPane prefHeight="105.0" prefWidth="1075.0" style="-fx-background-color: #4e3644;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
          <children>
@@ -39,7 +31,7 @@
       </AnchorPane>
       <AnchorPane layoutX="578.0" layoutY="109.0" prefHeight="738.0" prefWidth="498.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="577.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="109.0">
          <children>
-            <Button fx:id="borrowBtn" layoutX="212.0" layoutY="383.0" mnemonicParsing="false" onAction="#onBorrowButtonClick" prefHeight="39.0" prefWidth="74.0" styleClass="fancyButton" stylesheets="@css/style.css" text="Borrow" textFill="WHITE">
+            <Button fx:id="borrowBtn" layoutX="213.0" layoutY="411.0" mnemonicParsing="false" onAction="#onBorrowButtonClick" prefHeight="39.0" prefWidth="74.0" styleClass="fancyButton" stylesheets="@css/style.css" text="Borrow" textFill="WHITE">
                <font>
                   <Font name="Bell MT" size="16.0" />
                </font>
@@ -49,26 +41,21 @@
                   <Image url="@images/borrowBookIcon.png" />
                </image>
             </ImageView>
-            <TextArea fx:id="textArea" layoutX="57.0" layoutY="38.0" prefHeight="277.0" prefWidth="385.0" />
+            <TextArea fx:id="textArea" layoutX="57.0" layoutY="38.0" prefHeight="277.0" prefWidth="385.0" styleClass="fancyTextArea" stylesheets="@css/style.css" />
+            <Label fx:id="label" layoutX="103.0" layoutY="348.0" text="The book(s) have been successfully borrowed!" textFill="#32f800" visible="false">
+               <font>
+                  <Font name="Bell MT Italic" size="18.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
       <Separator layoutX="581.0" layoutY="105.0" orientation="VERTICAL" prefHeight="738.0" prefWidth="5.0" AnchorPane.bottomAnchor="2.0" AnchorPane.topAnchor="106.0" />
-      <TextField fx:id="searchField" layoutX="54.0" layoutY="123.0" onKeyTyped="#updateModel" prefHeight="39.0" prefWidth="498.0" promptText="Search" styleClass="fancyTextField" stylesheets="@css/style.css">
-         <font>
-            <Font name="Bell MT" size="12.0" />
-         </font>
-      </TextField>
-      <ImageView blendMode="DARKEN" fitHeight="31.0" fitWidth="55.0" layoutX="14.0" layoutY="127.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/searchIcon.png" />
-         </image>
-      </ImageView>
-      <TableView fx:id="table" layoutX="45.0" layoutY="197.0" prefHeight="623.0" prefWidth="498.0">
+      <TableView fx:id="table" layoutX="14.0" layoutY="127.0" prefHeight="657.0" prefWidth="548.0" styleClass="fancyTable" stylesheets="@css/style.css">
         <columns>
-          <TableColumn fx:id="isbnCol" prefWidth="74.0" text="ISBN" />
-          <TableColumn fx:id="titleCol" prefWidth="185.0" text="Title" />
-            <TableColumn fx:id="authorCol" prefWidth="146.0" text="Author" />
-            <TableColumn fx:id="noCopiesCol" prefWidth="92.0" text="No of Copies" />
+          <TableColumn fx:id="isbnCol" prefWidth="83.0" text="ISBN" />
+          <TableColumn fx:id="titleCol" prefWidth="176.0" text="Title" />
+            <TableColumn fx:id="authorCol" prefWidth="167.0" text="Author" />
+            <TableColumn fx:id="noCopiesCol" prefWidth="120.0" text="No of Copies" />
         </columns>
       </TableView>
    </children>
