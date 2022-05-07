@@ -53,7 +53,7 @@ public class ReturnBookController {
         }
         catch(Exception ex){
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("A problem appeared!");
+            alergit t.setTitle("A problem appeared!");
             alert.setHeaderText("");
             alert.setContentText(ex.getMessage());
             alert.show();
