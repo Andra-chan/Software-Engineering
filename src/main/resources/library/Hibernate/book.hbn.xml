@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="library.domain">
+
+    <class name="library.domain.Book" table="Book">
+        <id name="ISBN" column="ISBN"/>
+        <property name="title" column="title"/>
+        <property name="author" column="author"/>
+        <property name="noCopies" column="noBooks"/>
+    </class>
+
+</hibernate-mapping>

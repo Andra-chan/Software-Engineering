@@ -73,7 +73,7 @@ public class SubscriberController {
 
     }
 
-    public void onBorrowButtonClick(ActionEvent actionEvent) throws RepositoryException {
+    public void handleBorrow(ActionEvent actionEvent) throws RepositoryException {
 
         service.borrowBooks(user, booksToBorrow);
         textArea.setText("");

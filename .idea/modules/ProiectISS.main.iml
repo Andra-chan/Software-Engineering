@@ -5,9 +5,10 @@
       <configuration>
         <datasource-map>
           <unit-entry name="Hibernate:hibernate.xml" value="d0ffb2c2-703a-4cbc-a7be-72d17779d349" />
+          <unit-entry name="library:Hibernate:hibernate.xml" value="d0ffb2c2-703a-4cbc-a7be-72d17779d349" />
         </datasource-map>
         <naming-strategy-map />
-        <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/../../src/main/resources/Hibernate/hibernate.xml" />
+        <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/../../src/main/resources/library/Hibernate/hibernate.xml" />
       </configuration>
     </facet>
   </component>

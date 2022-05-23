@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="library.domain">
+
+    <class name="library.domain.BorrowedBook" table="BorrowedBook">
+        <id name="ISBN" column="ISBN"/>
+        <property name="username" column="username"/>
+        <property name="dateOfBorrow" column="dateOfBorrow"/>
+        <property name="dateOfReturn" column="dateOfReturn"/>
+        <property name="noCopies" column="noCopies"/>
+    </class>
+
+</hibernate-mapping>

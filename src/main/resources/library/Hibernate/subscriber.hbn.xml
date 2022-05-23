@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="library.domain">
+
+    <class name="library.domain.Subscriber" table="Subscriber">
+        <id name="username" column="username"/>
+        <property name="firstName" column="firstName"/>
+        <property name="lastName" column="lastName"/>
+        <property name="CNP" column="cnp"/>
+        <property name="address" column="address"/>
+        <property name="phone" column="phoneNumber"/>
+    </class>
+
+</hibernate-mapping>

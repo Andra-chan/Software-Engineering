@@ -9,9 +9,7 @@ import javafx.stage.Stage;
 import library.controllers.*;
 import library.domain.Book;
 import library.domain.User;
-import library.repository.BookRepository;
-import library.repository.BorrowedBookRepository;
-import library.repository.UserRepository;
+import library.repository.*;
 import library.repository.interfaces.IBookRepository;
 import library.repository.interfaces.IBorrowedBookRepository;
 import library.repository.interfaces.IUserRepository;
@@ -171,12 +169,15 @@ public class App extends Application {
         String password = "mypostgres";
 
         IValidator<User> userValidator = new UserValidator();
-        IUserRepository userRepository = new UserRepository(url, username, password, userValidator);
+        //IUserRepository userRepository = new UserRepository(url, username, password, userValidator);
+        IUserRepository userRepository = new HUserRepository(userValidator);
 
         IValidator<Book> bookValidator = new BookValidator();
-        IBookRepository bookRepository = new BookRepository(url, username, password, bookValidator);
+        //IBookRepository bookRepository = new BookRepository(url, username, password, bookValidator);
+        IBookRepository bookRepository = new HBookRepository(bookValidator);
 
-        IBorrowedBookRepository borrowedBookRepository = new BorrowedBookRepository(url, username, password);
+        //IBorrowedBookRepository borrowedBookRepository = new BorrowedBookRepository(url, username, password);
+        IBorrowedBookRepository borrowedBookRepository = new HBorrowedBookRepository();
 
         Service service = new Service(userRepository, bookRepository, borrowedBookRepository);
 
